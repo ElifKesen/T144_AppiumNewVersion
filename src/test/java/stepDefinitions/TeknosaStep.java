@@ -6,6 +6,8 @@ import pages.TeknosaPage;
 import utils.Driver;
 import utils.ReusableMethods;
 
+import java.io.IOException;
+
 public class TeknosaStep {
     TeknosaPage page=new TeknosaPage();
 
@@ -75,13 +77,48 @@ public class TeknosaStep {
         String enpahaliFiyat=page.enPahaliFiyat.getText();
         enpahaliFiyat = enpahaliFiyat.replaceAll("\\D", "");
         System.out.println(enpahaliFiyat);
-        
+
         Assert.assertTrue(Integer.parseInt(enpahaliFiyat)>Integer.parseInt(enucuzFiyat));
+    }
 
+    @Given("kategoriler bolumunden kaydirarak {string} bolumune tiklanir")
+    public void kategoriler_bolumunden_kaydirarak_telefon_bolumune_tiklanir(String kategoriSecim) {
+        ReusableMethods.bekle(5);
+        ReusableMethods.dikeyKaydirma(Driver.getAndroidDriver(), 0.60, 0.40, 0.50, 200);
+        ReusableMethods.bekle(7);
+        ReusableMethods.scrollWithUiScrollableAndClick(kategoriSecim);
 
+    }
+    @Given("kullanici ekran fotografi cekmek istedigi elementin {string} ekran fotografini ceker")
+    public void kullanici_ekran_fotografi_cekmek_istedigi_elementin_ekran_fotografini_ceker(String ekranfototexti) throws IOException {
+        ReusableMethods.bekle(2);
+        ReusableMethods.screenShotElement(ekranfototexti);
 
+    }
+
+    @Given("fiyatlarin azalan duzende oldugu test edilir")
+    public void fiyatlarin_azalan_duzende_oldugu_test_edilir() {
+        ReusableMethods.bekle(6);
+        String enPahaliFiyat=page.azalanenPahaliFiyat.getText();
+        enPahaliFiyat=enPahaliFiyat.replaceAll("\\D","");
+        System.out.println(enPahaliFiyat);
+        //ReusableMethods.ekranKaydirmaMethodu(511,2037,750,511,639);
+        ReusableMethods.dikeyKaydirma(Driver.getAndroidDriver(),0.80,0.20,0.50,100);
+        String enUcuzFiyat=page.azalanenUcuzFiyat.getText();
+        enUcuzFiyat=enUcuzFiyat.replaceAll("\\D","");
+        System.out.println(enUcuzFiyat);
+        Assert.assertTrue(Integer.parseInt(enPahaliFiyat)>Integer.parseInt(enUcuzFiyat));
+    }
 
 
 
     }
-}
+
+
+
+
+
+
+
+
+
