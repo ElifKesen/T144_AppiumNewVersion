@@ -32,6 +32,11 @@ public class Driver {
         if (appiumDriver == null) {
 
            UiAutomator2Options options=new UiAutomator2Options();
+           options.setDeviceName("Pixel 4")
+                   .setPlatformName("Android")
+                   .setPlatformVersion("10.0")
+                   .setAutomationName("UiAutomator2")
+                   .setApp("C:\\Users\\Elif Kesen\\IdeaProjects\\T144_ApiumNewVersion\\Apps\\Teknosa – Alisveris, Teknoloji_7.2.6_APKPure.apk");
 
 
             if (ConfigReader.getProperty("platformName").equals("Android")) {
