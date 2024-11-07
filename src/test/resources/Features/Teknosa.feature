@@ -10,3 +10,4 @@ Feature: Teknosa uygulamasi test edilir
     * Marka "Arzum" bolumunden marka secimi yapilir
     * siralama yapilirak "Artan Fiyat" secilir
     * fiyatlarin artan duzende oldugu test edilir
+
